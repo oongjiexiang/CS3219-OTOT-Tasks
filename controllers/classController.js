@@ -34,11 +34,11 @@ const create_student = (req, res) => {
             })
             .catch(err => {
                 console.log(err)
-                res.status(400).json({"message": "Try another input. Student not created"})
+                res.status(400).json({"message": "Student not created. Ensure that age is an integer, and name and username are supplied"})
             })
     }
     catch(err){
-        res.status(400).json({message: "Bad input. Ensure age is an integer"})
+        res.status(500).json({message: "Server error occurred. Try again later"})
     }
 }
 const update_student = (req, res) => {
