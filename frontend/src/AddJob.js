@@ -1,4 +1,5 @@
 import { useState } from "react";
+import {useHistory} from 'react-router'
 
 const AddJob = () => {
   const [title, setTitle] = useState("")
@@ -9,6 +10,8 @@ const AddJob = () => {
   const [success, setSuccess] = useState(false)
   const [isPending, setIsPending] = useState(false)
   const [error, setError] = useState("")
+
+  const history = useHistory();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,6 +30,7 @@ const AddJob = () => {
           if(response.status === 200) setSuccess(true)
           else setError("The job fails to be posted")
           setIsPending(false)
+          history.push('/')
         })
         .catch(err => {
           setIsPending(false)
@@ -37,22 +41,24 @@ const AddJob = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label>Job Title</label>
-      <input type="text" required value={title} onChange={(e) => setTitle(e.target.value)}></input>
-      <label>Description</label>
-      <textarea type="text" required value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
-      <label>Salary per hour</label>
-      <input type="text" required value={salary} onChange={(e) => setSalary(e.target.value)}></input>
-      <label></label>
-      <select required value={jobType} onChange={(e) => setJobtype(e.target.value)}>
-        <option>Technology</option>
-        <option>Research</option>
-        <option>Tutoring</option>
-        <option>Ad Hoc</option>
-      </select>
-      {!isPending && <button>Create Job</button>}
-      {isPending && <button disabled>Creating...</button>}
-      {success && <p>Success!</p>}
+      <div className="create-job">
+        <label>Job Title</label>
+        <input type="text" required value={title} onChange={(e) => setTitle(e.target.value)}></input>
+        <label>Description</label>
+        <textarea type="text" required value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+        <label>Salary per hour</label>
+        <input type="text" required value={salary} onChange={(e) => setSalary(e.target.value)}></input>
+        <label>Job Type</label>
+        <select required value={jobType} onChange={(e) => setJobtype(e.target.value)}>
+          <option>Technology</option>
+          <option>Research</option>
+          <option>Tutoring</option>
+          <option>Ad Hoc</option>
+        </select>
+        {!isPending && <button>Create Job</button>}
+        {isPending && <button disabled>Creating...</button>}
+        {error && <p>Oh no! Your job is not created! Try again?</p>}
+      </div>
     </form>
   );
 }

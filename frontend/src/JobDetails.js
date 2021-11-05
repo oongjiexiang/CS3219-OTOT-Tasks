@@ -2,6 +2,8 @@ import { useParams } from 'react-router-dom'
 import { useHistory } from 'react-router'
 import useGet from './useGet'
 
+const placeholderText = 'Not Available';
+
 const JobDetails = () => {
   const { id } = useParams()
   const { data: job, isPending, error } = useGet('https://cs3219-otot-b1.herokuapp.com/job/' + id)
@@ -20,9 +22,21 @@ const JobDetails = () => {
       {job && 
         <article>
           <h2>{ job.result.title }</h2>
-          <p>{ job.result.salary }</p>
-          <p>{ job.result.jobType }</p>
-          <p>{ job.result.description }</p>
+          <div id="salary-cat">
+            <span>Salary: ${ job.result.salary || placeholderText}</span>
+            <span>Job Category: { job.result.jobType || placeholderText}</span>
+          </div>
+
+          <div id="description">
+            <p>Description</p>
+            <p>{ job.result.description }</p>
+          </div>
+
+          <div id="contact">
+            <p>Contact person</p>
+            <p>{ job.result.contact || placeholderText}</p>
+          </div>
+          
           <button onClick={handleDelete}>Delete</button>
         </article>
       }
