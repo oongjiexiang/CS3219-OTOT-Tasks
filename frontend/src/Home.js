@@ -3,7 +3,7 @@ import useGet from "./useGet";
 
 
 const Home = () => {
-  const {data: jobs, isPending, error} = useGet('https://cs3219-otot-tasks-mv57od22ua-uc.a.run.app/student');
+  const {data: jobs, isPending, error} = useGet('https://cs3219-otot-tasks-mv57od22ua-uc.a.run.app/jobs');
   return (
     <div className="home">
       {error && <div>{error}</div>}
