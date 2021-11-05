@@ -1,34 +1,35 @@
 import { useState } from "react";
 
-const AddStudent = () => {
-  const [name, setName] = useState("")
-  const [username, setUsername] = useState("")
-  const [spec, setSpec] = useState("Software Engineering")
-  const [age, setAge] = useState("")
+const AddJob = () => {
+  const [title, setTitle] = useState("")
+  const [description, setDescription] = useState("")
+  const [salary, setSalary] = useState("")
+  const [jobType, setJobtype] = useState("")
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(isNaN(Number(age))) alert('Age must be an integer')
+    if(isNaN(Number(salary))) alert('salary must be an integer')
     else console.log("received value")
   }
 
   return (
     <form onSubmit={handleSubmit}>
-      <label>Name</label>
-      <input type="text" required value={name} onChange={(e) => setName(e.target.value)}></input>
-      <label>Username</label>
-      <input type="text" required value={username} onChange={(e) => setUsername(e.target.value)}></input>
-      <label>Age</label>
-      <input type="text" required value={age} onChange={(e) => setAge(e.target.value)}></input>
-      <label>Intended Specialisation</label>
-      <select required value={spec} onChange={(e) => setSpec(e.target.value)}>
-        <option>Software Engineering</option>
-        <option>Data Science</option>
-        <option>Artificial Intelligence</option>
+      <label>Job Title</label>
+      <input type="text" required value={title} onChange={(e) => setTitle(e.target.value)}></input>
+      <label>Description</label>
+      <textarea type="text" required value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+      <label>Salary per hour</label>
+      <input type="text" required value={salary} onChange={(e) => setSalary(e.target.value)}></input>
+      <label></label>
+      <select required value={jobType} onChange={(e) => setJobtype(e.target.value)}>
+        <option>Technology</option>
+        <option>Research</option>
+        <option>Tutoring</option>
+        <option>Ad Hoc</option>
       </select>
-      <button type="submit">Create Student</button>
+      <button type="submit">Create Job</button>
     </form>
   );
 }
  
-export default AddStudent;
+export default AddJob;

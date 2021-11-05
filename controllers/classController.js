@@ -33,7 +33,6 @@ const create_student = (req, res) => {
                 res.status(200).json({"message": "Student added to class"})
             })
             .catch(err => {
-                console.log(err)
                 res.status(400).json({"message": "Student not created. Ensure that age is an integer, and name and username are supplied"})
             })
     }
