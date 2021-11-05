@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import {useHistory, useParams} from 'react-router'
 import useGet from "./useGet";
- 
+
 const UpdateJob = () => {
   const { id } = useParams()
   const { data: job, ..._} = useGet('https://cs3219-otot-b1.herokuapp.com/job/' + id)
