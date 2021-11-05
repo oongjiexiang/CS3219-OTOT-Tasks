@@ -20,6 +20,8 @@ app.listen(port, () => {
     console.log(`Listening at ${port}`)
 })
 
+app.get('/', (req, res) => res.json("Server for OTOT Task B: a job portal for professors to find students under work-study scheme"))
+
 // check database
 db.on("error", console.error.bind(console, "MongoDB connection error"));
 
