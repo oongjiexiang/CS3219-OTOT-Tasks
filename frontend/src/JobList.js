@@ -10,6 +10,9 @@ const JobList = ({ jobs, title}) => {
             <h3>{ job.title }</h3>
             <p id="salary">Salary per hour: ${ job.salary }</p>
             <p>{ job.description }</p>
+            <Link to={`/job/update/${job._id}`}>
+              <button type="button">Update</button>
+            </Link>
           </Link>
         </div>
       ))}

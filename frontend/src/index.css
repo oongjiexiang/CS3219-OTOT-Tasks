@@ -44,6 +44,7 @@
 }
 
 .job-preview {
+  position: relative;
   padding: 0 15px;
   margin: 10px 0;
   border-bottom: 1px solid white;
@@ -65,6 +66,17 @@
 
 .job-preview a{
   text-decoration: none;
+}
+.job-preview button{
+  position: absolute;
+  right: 0;
+  top: 0;
+  border-radius: 6px;
+  background: #f1356d;
+  color: white;
+  padding: 5px;
+  border: 0px;
+  cursor: pointer;
 }
 
 /* Job Detail Page */
@@ -116,6 +128,36 @@
   padding:5px 5px;
 }
 .create-job button {
+  margin-top: 10px;
+  border-radius: 6px;
+  background: #f1356d;
+  color: white;
+  border: 0px;
+  padding: 6px;
+  cursor: pointer;
+}
+
+/* Update Job */
+.update-job {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.update-job h2 {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+.update-job label{
+  text-align: left;
+  display: block;
+}
+.update-job input, .update-job textarea, .update-job select {
+  width: 100%;
+  display: block;
+  box-sizing: border-box;
+  margin: 5px 0;
+  padding:5px 5px;
+}
+.update-job button {
   margin-top: 10px;
   border-radius: 6px;
   background: #f1356d;

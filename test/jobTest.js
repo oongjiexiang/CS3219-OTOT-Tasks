@@ -22,7 +22,9 @@ describe("Job API", () => {
             let job = new Job({
                 title: "Research Assistant",
                 description: "Prepare documents and research findings for the landscape of maritime environment in Singapore. Must possess good Excel skills",
-                salary: "10"
+                salary: "10",
+                jobType: "Research",
+                contact: "Ms. Fiona Lim at fiona@yahoo.com"
             });
             chai.request(server)
                 .post('/job')

@@ -24,9 +24,11 @@ const create_job = (req, res) => {
     let title = req.body.title;
     let salary = req.body.salary;
     let description = req.body.description;
+    let jobType = req.body.jobType;
+    let contact = req.body.contact;
     try{
         const job = new Job({
-            title: title, salary: salary, description: description
+            title: title, salary: salary, description: description, jobType: jobType, contact: contact
         })
         job.save()
             .then(result => {
@@ -45,7 +47,8 @@ const update_job = (req, res) => {
     try{
         Job.findById(id)
         .then(doc => {
-            Object.assign(doc, {title: req.body.title, description: req.body.description, salary: req.body.salary}).save()
+            Object.assign(doc, {title: req.body.title, description: req.body.description, salary: req.body.salary,
+                jobType: req.body.jobType, contact: req.body.contact}).save()
                 .then(doc => {
                     res.status(200).json({message: "Successfully updated"})
                 })

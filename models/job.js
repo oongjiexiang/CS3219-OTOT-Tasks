@@ -8,7 +8,8 @@ const jobSchema = new Schema({
   },
   description: String,
   salary: Number,
-  jobType: String
+  jobType: String,
+  contact: String
 })
 
 const Job = mongoose.model('Job', jobSchema)

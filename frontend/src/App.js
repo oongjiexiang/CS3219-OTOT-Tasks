@@ -5,6 +5,7 @@ import AddJob from './AddJob';
 import Home from './Home';
 import JobDetails from './JobDetails';
 import NotFound from './NotFound';
+import UpdateJob from './UpdateJob';
 
 function App() {
   return (
@@ -21,6 +22,9 @@ function App() {
           </Route>
           <Route exact path="/job/:id">
             <JobDetails />
+          </Route>
+          <Route exact path="/job/update/:id">
+            <UpdateJob />
           </Route>
           <Route path="*">
             <NotFound />
