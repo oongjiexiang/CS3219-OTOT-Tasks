@@ -17,7 +17,10 @@ const AddJob = () => {
     e.preventDefault();
     setIsPending(true);
 
-    if(isNaN(Number(salary))) alert('salary must be an integer')
+    if(isNaN(Number(salary))){
+      alert('salary must be an integer')
+      setIsPending(false)
+    }
     else{
       const newJob = {title, description, salary, jobType};
 

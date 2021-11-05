@@ -4,7 +4,7 @@ import useGet from "./useGet";
 
 const UpdateJob = () => {
   const { id } = useParams()
-  const { data: job, ..._} = useGet('https://cs3219-otot-b1.herokuapp.com/job/' + id)
+  const { data: job, ..._} = useGet('https://cs3219-otot-b3-ojx-mv57od22ua-uc.a.run.app/job/' + id)
   const history = useHistory()
 
   const [title, setTitle] = useState("")
@@ -30,11 +30,14 @@ const UpdateJob = () => {
     e.preventDefault();
     setIsPending(true);
 
-    if(isNaN(Number(salary))) alert('salary must be an integer')
+    if(isNaN(Number(salary))){
+      alert('salary must be an integer')
+      setIsPending(false)
+    }
     else{
       const newJob = {title, description, salary, jobType};
 
-      fetch('https://cs3219-otot-b1.herokuapp.com/job/' + id, {
+      fetch('https://cs3219-otot-b3-ojx-mv57od22ua-uc.a.run.app/job/' + id, {
         method: "PUT",
         headers: { "Content-Type": "application/json"},
         body: JSON.stringify(newJob)

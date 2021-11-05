@@ -6,11 +6,11 @@ const placeholderText = 'Not Available';
 
 const JobDetails = () => {
   const { id } = useParams()
-  const { data: job, isPending, error } = useGet('https://cs3219-otot-b1.herokuapp.com/job/' + id)
+  const { data: job, isPending, error } = useGet('https://cs3219-otot-b3-ojx-mv57od22ua-uc.a.run.app/job/' + id)
   const history = useHistory()
 
   const handleDelete = (e) => {
-    fetch('https://cs3219-otot-b1.herokuapp.com/job/' + id, {
+    fetch('https://cs3219-otot-b3-ojx-mv57od22ua-uc.a.run.app/job/' + id, {
       method: "DELETE"
     }).then(() => history.push('/'))
   }
