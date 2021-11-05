@@ -6,10 +6,33 @@ const AddJob = () => {
   const [salary, setSalary] = useState("")
   const [jobType, setJobtype] = useState("")
 
+  const [success, setSuccess] = useState(false)
+  const [isPending, setIsPending] = useState(false)
+  const [error, setError] = useState("")
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsPending(true);
+
     if(isNaN(Number(salary))) alert('salary must be an integer')
-    else console.log("received value")
+    else{
+      const newJob = {title, description, salary, jobType};
+
+      fetch('https://cs3219-otot-b1.herokuapp.com/job', {
+        method: "POST",
+        headers: { "Content-Type": "application/json"},
+        body: JSON.stringify(newJob)
+      })
+        .then(response => {
+          if(response.status === 200) setSuccess(true)
+          else setError("The job fails to be posted")
+          setIsPending(false)
+        })
+        .catch(err => {
+          setIsPending(false)
+          console.log(err)
+        })
+    }
   }
 
   return (
@@ -27,7 +50,9 @@ const AddJob = () => {
         <option>Tutoring</option>
         <option>Ad Hoc</option>
       </select>
-      <button type="submit">Create Job</button>
+      {!isPending && <button>Create Job</button>}
+      {isPending && <button disabled>Creating...</button>}
+      {success && <p>Success!</p>}
     </form>
   );
 }

@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 
 const JobList = ({ jobs, title}) => {
-  // console.log("in JobtList, ", students)
-  // console.log("in JobList, ", title)
   return (
     <div className="job-list">
       <h2>{ title }</h2>
