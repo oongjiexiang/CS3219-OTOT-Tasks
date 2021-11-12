@@ -226,10 +226,21 @@ describe("Job API", () => {
                 chai.request(server)
                 .delete(`/job/${doc._id}`)
                 .end((err, res) => {
+                    res.should.have.status(STATUS_CODE_OK)
                     res.body.should.have.property('message');
                     res.body.message.should.eql('Successfully deleted')
                     done();
                 })
+            })
+        });
+        it('It should NOT DELETE a job when there is no such ID', (done) => {
+            chai.request(server)
+            .delete('/job/no-such-id')
+            .end((err, res) => {
+                res.should.have.status(STATUS_CODE_BAD_REQUEST)
+                res.body.should.have.property('message');
+                res.body.message.should.eql('No such job')
+                done();
             })
         })
     })

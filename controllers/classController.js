@@ -69,7 +69,7 @@ const delete_student = (req, res) => {
             res.status(200).json({message: "Successfully deleted"})
         })
         .catch(err => {
-            res.status(500).json({message: "Error deleting"})
+            res.status(400).json({message: "No such student"})
         })
 }
 module.exports = {
